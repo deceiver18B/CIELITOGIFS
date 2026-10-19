@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buenas noches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+
+    --sky-top: #0c1230;
+    --sky-mid: #1b2456;
+    --sky-bottom: #3a2a63;
+    --ink: #f4efff;
+    --ink-soft: #c9c0ea;
+    --moon: #fff3d2;
+    --moon-shade: #f3dfa0;
+    --rose: #e94f6f;
+    --rose-dark: #b9345a;
+    --leaf: #4f8f5f;
+    --star: #fff8e0;
+    --card: rgba(20, 18, 46, .72);
+    --shadow: rgba(0, 0, 0, .5);
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --card: rgba(20, 18, 46, .8);
+    }
+  }
+
+  :root[data-modo="dia"] {
+    --sky-top: #a9ddff;
+    --sky-mid: #ffe1a8;
+    --sky-bottom: #ffd0a0;
+    --ink: #4a2f22;
+    --ink-soft: #8a6a4a;
+    --moon: #fff6c2;
+    --moon-shade: #ffe27a;
+    --card: rgba(255, 255, 255, .8);
+    --shadow: rgba(90, 60, 20, .25);
+  }
+  :root[data-modo="dia"] .estrella { display: none; }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { height: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    margin: 0;
+    min-height: 100%;
+    background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 55%, var(--sky-bottom) 100%);
+    color: var(--ink);
+    font-family: "Quicksand", "Trebuchet MS", system-ui, sans-serif;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 18px;
+    text-align: center;
+    position: relative;
+  }
+
+  .estrella {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: var(--star);
+    border-radius: 50%;
+    animation: titilar 3.4s ease-in-out infinite;
+  }
+  @keyframes titilar {
+    0%, 100% { opacity: .25; }
+    50% { opacity: 1; }
+  }
+
+  .luna {
+    position: absolute;
+    top: 7%;
+    right: 12%;
+    width: clamp(56px, 14vw, 90px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 32%, var(--moon) 0%, var(--moon-shade) 70%);
+    box-shadow: 0 0 40px rgba(255, 243, 210, .45);
+  }
+
+  .titulo {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: clamp(1.7rem, 7vw, 2.3rem);
+    margin: 0 0 10px;
+    z-index: 1;
+  }
+
+  .escena {
+    width: min(78vw, 300px);
+    z-index: 1;
+    filter: drop-shadow(0 14px 18px var(--shadow));
+    animation: flotar 6s ease-in-out infinite;
+  }
+  @keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .ojos {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: parpadeo 5.5s ease-in-out infinite;
+  }
+  @keyframes parpadeo {
+    0%, 90%, 100% { transform: scaleY(1); }
+    94% { transform: scaleY(.08); }
+  }
+
+  .tarjeta {
+    margin-top: 14px;
+    max-width: 34ch;
+    background: var(--card);
+    border-radius: 22px;
+    padding: 22px 24px;
+    box-shadow: 0 16px 36px var(--shadow);
+    z-index: 1;
+    backdrop-filter: blur(2px);
+  }
+  .poema {
+    margin: 0;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(1.2rem, 4.8vw, 1.45rem);
+    line-height: 1.55;
+    white-space: pre-line;
+  }
+  .firma {
+    margin: 14px 0 0;
+    font-size: .92rem;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .escena, .ojos, .estrella { animation: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="luna" aria-hidden="true"></div>
+
+  <h1 class="titulo" id="titulo">Buenas noches, Ariana</h1>
+
+  <svg class="escena" viewBox="0 0 300 300" role="img" aria-label="Gatito negro de ojos verdes sentado, con una rosa roja en la boca">
+    <ellipse cx="150" cy="276" rx="86" ry="10" fill="rgba(0,0,0,.25)"/>
+
+    <!-- cola -->
+    <path d="M206 232 C 252 230 266 180 244 148" fill="none" stroke="#15151d" stroke-width="16" stroke-linecap="round"/>
+
+    <!-- cuerpo -->
+    <path d="M88 268 C 78 206 108 164 150 164 C 192 164 222 206 212 268 Z" fill="#15151d"/>
+
+    <!-- orejas -->
+    <path d="M112 128 L118 84 L146 112 Z" fill="#15151d"/>
+    <path d="M188 128 L182 84 L154 112 Z" fill="#15151d"/>
+    <path d="M119 116 L121 96 L135 110 Z" fill="#30222c"/>
+    <path d="M181 116 L179 96 L165 110 Z" fill="#30222c"/>
+
+    <!-- cabeza -->
+    <circle cx="150" cy="150" r="46" fill="#15151d"/>
+
+    <!-- ojos verdes -->
+    <g class="ojos">
+      <ellipse cx="132" cy="146" rx="9.5" ry="12" fill="#5fd46f"/>
+      <ellipse cx="168" cy="146" rx="9.5" ry="12" fill="#5fd46f"/>
+      <ellipse cx="132" cy="146" rx="3" ry="9.5" fill="#0a0a0a"/>
+      <ellipse cx="168" cy="146" rx="3" ry="9.5" fill="#0a0a0a"/>
+      <circle cx="135" cy="141" r="2.1" fill="#fff" opacity=".85"/>
+      <circle cx="171" cy="141" r="2.1" fill="#fff" opacity=".85"/>
+    </g>
+
+    <!-- nariz y boca -->
+    <path d="M145 162 L155 162 L150 168 Z" fill="#c98a9b"/>
+    <path d="M150 168 Q 143 176 136 172 M150 168 Q 157 176 164 172" fill="none" stroke="#6b6f7a" stroke-width="1.8" stroke-linecap="round"/>
+
+    <!-- bigotes -->
+    <path d="M122 162 L88 156 M122 168 L88 170 M178 162 L212 156 M178 168 L212 170" stroke="rgba(255,255,255,.55)" stroke-width="1.4" stroke-linecap="round"/>
+
+    <!-- rosa en la boca -->
+    <g transform="translate(150 182) rotate(10)">
+      <path d="M0 0 L6 34" stroke="var(--leaf)" stroke-width="4" stroke-linecap="round"/>
+      <path d="M3 18 C 14 18 18 10 16 4" fill="none" stroke="var(--leaf)" stroke-width="3" stroke-linecap="round"/>
+      <circle r="12" fill="var(--rose-dark)"/>
+      <circle r="8.4" fill="var(--rose)"/>
+      <circle r="4.6" fill="var(--rose-dark)"/>
+      <path d="M-11 -2 C -15 -9 -7 -15 0 -12" fill="none" stroke="var(--rose-dark)" stroke-width="1.6" stroke-linecap="round"/>
+    </g>
+  </svg>
+
+  <div class="tarjeta">
+    <p class="poema" id="poema">Que la luna cuide tu sueño
+y las estrellas tu calma;
+que esta pequeña rosa
+te lleve un pedazo de mi alma.
+
+Descansa tranquila, Ariana,
+mañana sigue el camino;
+hoy solo queda desearte
+la más dulce buenas noches.</p>
+  </div>
+
+<script>
+  // estrellas aleatorias repartidas por el cielo
+  (function () {
+    var total = 46;
+    for (var i = 0; i < total; i++) {
+      var e = document.createElement("div");
+      e.className = "estrella";
+      e.style.left = (Math.random() * 100) + "%";
+      e.style.top = (Math.random() * 62) + "%";
+      e.style.animationDelay = (Math.random() * 4).toFixed(2) + "s";
+      var escala = 0.6 + Math.random() * 1.2;
+      e.style.transform = "scale(" + escala.toFixed(2) + ")";
+      document.body.appendChild(e);
+    }
+  })();
+
+  // cambia el mensaje según la hora del dispositivo: antes de las 19:00 es de día
+  (function () {
+    var hora = new Date().getHours();
+    var esDia = hora >= 6 && hora < 19;
+    document.documentElement.setAttribute("data-modo", esDia ? "dia" : "noche");
+
+    var POEMA_DIA = "Que el sol te despierte\ncon ganas de sonreír;\nque esta pequeña rosa\nte acompañe en tu vivir.\n\nQue el día te trate bien, Ariana,\ny si acaso no es así,\nrecuerda que hay alguien\nque siempre piensa en ti.";
+    var POEMA_NOCHE = "Que la luna cuide tu sueño\ny las estrellas tu calma;\nque esta pequeña rosa\nte lleve un pedazo de mi alma.\n\nDescansa tranquila, Ariana,\nmañana sigue el camino;\nhoy solo queda desearte\nla más dulce buenas noches.";
+
+    document.getElementById("titulo").textContent = esDia ? "Buenos días, Ariana" : "Buenas noches, Ariana";
+    document.getElementById("poema").textContent = esDia ? POEMA_DIA : POEMA_NOCHE;
+  })();
+</script>
+</body>
+</html>
